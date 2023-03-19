@@ -1,0 +1,27 @@
+@import './normalize.css';
+
+html {
+    background-color: var(--light-grayish-blue-hover);
+}
+
+body {
+    margin: 0;
+    font-family: 'PT Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+:root {
+    --very-dark-blue: #3F4045;
+    --very-dark-desaturated-blue: #5C6F68;
+    --light-grayish-blue: #8AA39B;
+    --light-grayish-blue-hover: #F0F7EE;
+    --dark-grayish-blue: #F0F7EE;
+    --very-dark-grayish-blue: hsl(237, 14%, 26%);
+    /* --very-dark-blue: hsl(235, 21%, 11%);
+    --very-dark-desaturated-blue: hsl(235, 24%, 19%);
+    --light-grayish-blue: hsl(234, 39%, 85%);
+    --light-grayish-blue-hover: hsl(236, 33%, 92%);
+    --dark-grayish-blue: hsl(234, 11%, 52%);
+    --very-dark-grayish-blue: hsl(237, 14%, 26%); */
+}

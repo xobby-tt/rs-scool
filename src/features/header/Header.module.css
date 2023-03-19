@@ -1,0 +1,14 @@
+.header {
+    background-color: var(--very-dark-blue);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.tabLinks {
+    display: flex;
+}
+
+.logo {
+    width: 200px;
+}

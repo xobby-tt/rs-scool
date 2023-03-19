@@ -1,0 +1,7 @@
+# Add files here to ignore them from eslint check
+
+/dist
+/coverage
+node_modules/**
+
+tsconfig*.json

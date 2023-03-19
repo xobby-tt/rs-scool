@@ -1,0 +1,32 @@
+.button {
+    padding: 10px;
+    border: 1px solid grey;
+    color: white;
+    border-radius: 20px;
+    background-color: var(--dark-grayish-blue);
+}
+
+.button[data-size='xs'] {
+    height: 1.5rem;
+    font-weight: normal;
+}
+
+.button[data-size='s'] {
+    height: 2rem;
+    font-weight: normal;
+}
+
+.button[data-size='m'] {
+    height: 2.75rem;
+    font-weight: bold;
+}
+
+.button[data-size='l'] {
+    height: 3.5rem;
+    font-weight: bold;
+}
+
+.button[data-size='xl'] {
+    height: 3.75rem;
+    font-weight: bold;
+}

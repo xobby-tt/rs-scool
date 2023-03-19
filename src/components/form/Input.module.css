@@ -1,0 +1,22 @@
+.inputWithIcon {
+    width: 100%;
+    position: relative;
+}
+
+.input {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    color: var(--light-grayish-blue);
+    background: var(--very-dark-blue);
+    border: none;
+    border-radius: 20px;
+}
+
+.icon {
+    color: var(--light-grayish-blue);
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translate(0, -50%);
+}

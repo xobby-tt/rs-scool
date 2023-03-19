@@ -1,0 +1,19 @@
+.link {
+  height: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  cursor: pointer;
+  color: var(--light-grayish-blue);
+  text-decoration: none;
+  transition: background-color, color 300ms;
+}
+
+.link + .link {
+  margin-left: 2px;
+}
+
+.link:hover,
+.link.active {
+  background-color: var(--light-grayish-blue);
+  color: var(--dark-grayish-blue);
+}

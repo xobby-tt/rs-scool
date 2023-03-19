@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { ICard } from '../../../models';
-import classes from './Card-item.module.css';
+import classes from './CardItem.module.css';
 
 type CardProps = {
   card: ICard;

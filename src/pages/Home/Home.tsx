@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import Search from '../../components/ui/Search/Search';
-import CardList from '../../features/cards/card-list/Card-list';
+import CardList from '../../features/cards/CardList/CardList';
 import classes from './Home.module.css';
 
 class Home extends Component {

@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { CARDS } from '../../../mocks/cards.mock';
-import CardItem from '../card-item/Card-item';
-import classes from './Card-list.module.css';
+import CardItem from '../CardItem/CardItem';
+import classes from './CardList.module.css';
 
 class CardList extends Component {
   cards = CARDS;

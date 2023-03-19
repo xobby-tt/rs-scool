@@ -16,9 +16,12 @@ class Search extends Component<SearchProps, SearchState> {
   }
 
   onSearch = (text: string) => {
-    console.log('set search');
-    localStorage.setItem('search', text);
+    this.setState({ searchText: text });
   };
+
+  componentWillUnmount() {
+    localStorage.setItem('search', this.state.searchText || '');
+  }
 
   render() {
     return (

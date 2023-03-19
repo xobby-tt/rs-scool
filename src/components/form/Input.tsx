@@ -22,10 +22,7 @@ class Input extends Component<InputProps, InputState> {
     const value = event.target?.value;
     this.setState({ ...this.state, value: value });
 
-    console.log('change');
     if (this.props.onChange) {
-      console.log('push');
-
       this.props.onChange(value);
     }
   };

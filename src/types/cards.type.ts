@@ -3,7 +3,10 @@ export interface ICard {
   name: string;
   description: string;
   imageUrl: string;
-  work?: string;
   address?: string;
   tags?: string[];
+  birthdate?: Date;
+  isBirthDateVisible?: boolean;
+  sex?: 'Female' | 'Male';
+  profession?: string;
 }

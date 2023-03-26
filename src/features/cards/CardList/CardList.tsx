@@ -1,15 +1,17 @@
 import { Component } from 'react';
-import { CARDS } from '../../../mocks/cards.mock';
+import { ICard } from '../../../types';
 import CardItem from '../CardItem/CardItem';
 import classes from './CardList.module.css';
 
-class CardList extends Component {
-  cards = CARDS;
+type CardListProps = {
+  cards: ICard[];
+};
 
+class CardList extends Component<CardListProps> {
   render() {
     return (
       <div className={classes.cardList}>
-        {this.cards.map((card) => (
+        {this.props.cards.map((card) => (
           <CardItem card={card} key={card.id}></CardItem>
         ))}
       </div>

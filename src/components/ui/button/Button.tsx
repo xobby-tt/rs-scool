@@ -1,7 +1,7 @@
 import { Component, PropsWithChildren } from 'react';
 import classes from './Button.module.css';
 
-enum Size {
+export enum Size {
   XS = 'xs',
   S = 's',
   M = 'm',
@@ -10,6 +10,7 @@ enum Size {
 
 type ButtonProps = {
   size?: Size;
+  type?: 'button' | 'submit' | 'reset';
 };
 
 class Button extends Component<PropsWithChildren<ButtonProps>> {
@@ -18,7 +19,11 @@ class Button extends Component<PropsWithChildren<ButtonProps>> {
   }
   render() {
     return (
-      <button className={classes.button} data-size={this.props.size || Size.S}>
+      <button
+        className={classes.button}
+        type={this.props.type}
+        data-size={this.props.size || Size.S}
+      >
         {this.props.children}
       </button>
     );

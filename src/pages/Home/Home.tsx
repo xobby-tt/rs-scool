@@ -1,5 +1,6 @@
 import { Component } from 'react';
-import Search from '../../components/ui/Search/Search';
+import { CardsContext } from '../../App';
+import Search from '../../components/form/Search/Search';
 import CardList from '../../features/cards/CardList/CardList';
 import classes from './Home.module.css';
 
@@ -13,7 +14,9 @@ class Home extends Component {
             <Search placeholder="Find you love..."></Search>
           </div>
         </div>
-        <CardList></CardList>
+        <CardsContext.Consumer>
+          {({ cards }) => <CardList cards={cards}></CardList>}
+        </CardsContext.Consumer>
       </>
     );
   }

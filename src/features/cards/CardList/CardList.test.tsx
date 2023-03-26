@@ -6,7 +6,7 @@ import CardList from './CardList';
 
 describe('CardList', () => {
   test('Should have cards', () => {
-    render(<CardList></CardList>);
+    render(<CardList cards={CARDS}></CardList>);
     expect(screen.getAllByRole('heading')).toHaveLength(CARDS.length);
   });
 });

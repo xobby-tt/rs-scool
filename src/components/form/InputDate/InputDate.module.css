@@ -3,7 +3,7 @@
     position: relative;
 }
 
-.input {
+.date {
     width: 100%;
     padding: 20px;
     box-sizing: border-box;
@@ -13,10 +13,13 @@
     border-radius: 20px;
 }
 
-.icon {
-    color: var(--light-grayish-blue);
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translate(0, -50%);
+.date[data-error] {
+    background-color: rgba(203,132,118,0.62);
+    border: 1px solid red;
+    color: black;
+}
+
+.error {
+    margin-top: 10px;
+    color: red;
 }

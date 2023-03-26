@@ -31,3 +31,8 @@
   padding: 10px 20px;
   margin: 0;
 }
+
+.info {
+  padding: 10px 20px;
+  color: var(--very-dark-desaturated-blue);
+}

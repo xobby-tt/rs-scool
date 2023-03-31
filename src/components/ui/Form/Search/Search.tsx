@@ -1,11 +1,11 @@
 import { Component } from 'react';
-import Input from '../Input/Input';
+import { Input } from '../Input/Input';
 
 type SearchProps = {
   placeholder?: string;
 };
 
-class Search extends Component<SearchProps> {
+export class Search extends Component<SearchProps> {
   inputRef: HTMLInputElement | null;
 
   constructor(props: SearchProps) {
@@ -35,5 +35,3 @@ class Search extends Component<SearchProps> {
     );
   }
 }
-
-export default Search;

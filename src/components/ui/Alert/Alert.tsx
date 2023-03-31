@@ -7,7 +7,7 @@ type AlertProps = {
   close: (alert: IAlert) => void;
 };
 
-class Alert extends Component<AlertProps> {
+export class Alert extends Component<AlertProps> {
   constructor(props: AlertProps) {
     super(props);
   }
@@ -29,5 +29,3 @@ class Alert extends Component<AlertProps> {
     );
   }
 }
-
-export default Alert;

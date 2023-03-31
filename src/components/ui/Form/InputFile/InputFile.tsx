@@ -1,7 +1,7 @@
 import { Component } from 'react';
-import classes from './InputDate.module.css';
+import classes from './InputFile.module.css';
 
-type InputDateProps = {
+type InputFileProps = {
   placeholder?: string;
   icon?: string;
   name?: string;
@@ -9,8 +9,8 @@ type InputDateProps = {
   inputRef?: (ref: HTMLInputElement | null) => void;
 };
 
-class InputDate extends Component<InputDateProps> {
-  constructor(props: InputDateProps) {
+export class InputFile extends Component<InputFileProps> {
+  constructor(props: InputFileProps) {
     super(props);
   }
 
@@ -19,8 +19,8 @@ class InputDate extends Component<InputDateProps> {
       <>
         <div className={classes.inputWithIcon}>
           <input
-            type="date"
-            className={classes.date}
+            type="file"
+            className={classes.input}
             name={this.props.name}
             ref={this.props.inputRef}
             placeholder={this.props.placeholder}
@@ -35,5 +35,3 @@ class InputDate extends Component<InputDateProps> {
     );
   }
 }
-
-export default InputDate;

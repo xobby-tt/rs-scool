@@ -1,7 +1,7 @@
 import { Component } from 'react';
-import classes from './InputFile.module.css';
+import classes from './Input.module.css';
 
-type InputFileProps = {
+type InputProps = {
   placeholder?: string;
   icon?: string;
   name?: string;
@@ -9,8 +9,8 @@ type InputFileProps = {
   inputRef?: (ref: HTMLInputElement | null) => void;
 };
 
-class InputFile extends Component<InputFileProps> {
-  constructor(props: InputFileProps) {
+export class Input extends Component<InputProps> {
+  constructor(props: InputProps) {
     super(props);
   }
 
@@ -19,7 +19,6 @@ class InputFile extends Component<InputFileProps> {
       <>
         <div className={classes.inputWithIcon}>
           <input
-            type="file"
             className={classes.input}
             name={this.props.name}
             ref={this.props.inputRef}
@@ -35,5 +34,3 @@ class InputFile extends Component<InputFileProps> {
     );
   }
 }
-
-export default InputFile;

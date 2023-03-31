@@ -10,7 +10,7 @@ type SelectProps = {
   selectRef?: (ref: HTMLSelectElement | null) => void;
 };
 
-class Select extends Component<SelectProps> {
+export class Select extends Component<SelectProps> {
   constructor(props: SelectProps) {
     super(props);
   }
@@ -40,5 +40,3 @@ class Select extends Component<SelectProps> {
     );
   }
 }
-
-export default Select;

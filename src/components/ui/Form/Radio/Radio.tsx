@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import Checkbox from '../Checkbox/Checkbox';
+import { Checkbox } from '../Checkbox/Checkbox';
 import classes from './Radio.module.css';
 
 type RadioProps = {
@@ -11,7 +11,7 @@ type RadioProps = {
   inputRef?: (ref: HTMLInputElement | null) => void;
 };
 
-class Radio extends Component<RadioProps> {
+export class Radio extends Component<RadioProps> {
   constructor(props: RadioProps) {
     super(props);
   }
@@ -42,5 +42,3 @@ class Radio extends Component<RadioProps> {
     );
   }
 }
-
-export default Radio;

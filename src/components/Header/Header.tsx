@@ -1,8 +1,8 @@
 import { Component } from 'react';
-import TabLink from '../../components/ui/TabLink/TabLink';
+import { TabLink } from '../UI';
 import classes from './Header.module.css';
 
-class Home extends Component {
+class Header extends Component {
   render() {
     return (
       <>
@@ -19,4 +19,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default Header;

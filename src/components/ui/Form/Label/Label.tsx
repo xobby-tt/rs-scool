@@ -6,7 +6,7 @@ type LabelProps = {
   className?: string;
 };
 
-class Label extends Component<PropsWithChildren<LabelProps>> {
+export class Label extends Component<PropsWithChildren<LabelProps>> {
   render() {
     return (
       <>
@@ -18,5 +18,3 @@ class Label extends Component<PropsWithChildren<LabelProps>> {
     );
   }
 }
-
-export default Label;

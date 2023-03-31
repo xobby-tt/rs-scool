@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Outlet } from 'react-router-dom';
-import Header from './features/Header/Header';
 import { CARDS } from './mocks/cards.mock';
 import { AlertStatus, IAlert, ICard } from './types';
 import classes from './App.module.css';
-import Alert from './components/ui/Alert/Alert';
+import Header from './components/Header/Header';
+import { Alert } from './components/UI';
 
 export const CardsContext = React.createContext({
   cards: CARDS,

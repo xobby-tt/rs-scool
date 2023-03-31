@@ -1,10 +1,10 @@
 import { Component } from 'react';
 import { CardsContext } from '../../App';
-import Search from '../../components/form/Search/Search';
-import CardList from '../../features/cards/CardList/CardList';
+import CardList from '../../components/Cards/CardList/CardList';
+import { Search } from '../../components/UI/Form';
 import classes from './Home.module.css';
 
-class Home extends Component {
+export class Home extends Component {
   render() {
     return (
       <>
@@ -21,5 +21,3 @@ class Home extends Component {
     );
   }
 }
-
-export default Home;

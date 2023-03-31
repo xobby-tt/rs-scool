@@ -1,5 +1,5 @@
 import { Component, PropsWithChildren } from 'react';
-import Checkbox from '../Checkbox/Checkbox';
+import { Checkbox } from '../Checkbox/Checkbox';
 import classes from './InputCheckbox.module.css';
 
 type InputCheckboxProps = {
@@ -8,7 +8,7 @@ type InputCheckboxProps = {
   inputRef?: (ref: HTMLInputElement | null) => void;
 };
 
-class InputCheckbox extends Component<PropsWithChildren<InputCheckboxProps>> {
+export class InputCheckbox extends Component<PropsWithChildren<InputCheckboxProps>> {
   render() {
     return (
       <label className={classes.checkbox}>
@@ -18,5 +18,3 @@ class InputCheckbox extends Component<PropsWithChildren<InputCheckboxProps>> {
     );
   }
 }
-
-export default InputCheckbox;

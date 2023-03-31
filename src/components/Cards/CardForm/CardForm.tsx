@@ -1,13 +1,5 @@
 import { Component, FormEvent } from 'react';
 import { AlertContext } from '../../../App';
-import Input from '../../../components/form/Input/Input';
-import InputCheckbox from '../../../components/form/InputCheckbox/InputCheckbox';
-import InputDate from '../../../components/form/InputDate/InputDate';
-import InputFile from '../../../components/form/InputFile/InputFile';
-import Label from '../../../components/form/Label/Label';
-import Radio from '../../../components/form/Radio/Radio';
-import Select from '../../../components/form/Select/Select';
-import Button, { Size } from '../../../components/ui/Button/Button';
 import { AlertStatus, IAlert, ICard } from '../../../types';
 import {
   IndexOptional,
@@ -15,6 +7,8 @@ import {
   ValidatorCompose,
   validators,
 } from '../../../utils/form.util';
+import { Button, Size } from '../../UI';
+import { Input, InputCheckbox, InputDate, InputFile, Label, Radio, Select } from '../../UI/Form';
 import classes from './CardForm.module.css';
 
 type CardFormProps = {
@@ -25,7 +19,7 @@ type CardFormState = {
   errors: { [key in keyof ICard]?: string[] };
 };
 
-class CardForm extends Component<CardFormProps, CardFormState> {
+export class CardForm extends Component<CardFormProps, CardFormState> {
   form: HTMLFormElement = null;
   validator: ValidatorCompose<ICard>;
 
@@ -148,5 +142,3 @@ class CardForm extends Component<CardFormProps, CardFormState> {
     );
   }
 }
-
-export default CardForm;

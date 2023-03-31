@@ -12,7 +12,7 @@ type CheckboxProps = {
   inputRef?: (ref: HTMLInputElement | null) => void;
 };
 
-class Checkbox extends Component<CheckboxProps> {
+export class Checkbox extends Component<CheckboxProps> {
   constructor(props: CheckboxProps) {
     super(props);
   }
@@ -31,5 +31,3 @@ class Checkbox extends Component<CheckboxProps> {
     );
   }
 }
-
-export default Checkbox;

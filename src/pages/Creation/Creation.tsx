@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { CardsContext } from '../../App';
-import CardForm from '../../features/cards/CardForm/CardForm';
-import CardList from '../../features/cards/CardList/CardList';
+import { CardForm } from '../../components/Cards';
+import CardList from '../../components/Cards/CardList/CardList';
 import { ICard } from '../../types';
 import classes from './Creation.module.css';
 
@@ -9,7 +9,7 @@ type CreationState = {
   newCards: ICard[];
 };
 
-class Creation extends Component<object, CreationState> {
+export class Creation extends Component<object, CreationState> {
   constructor(props: object) {
     super(props);
 

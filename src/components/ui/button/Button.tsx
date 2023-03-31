@@ -13,7 +13,7 @@ type ButtonProps = {
   type?: 'button' | 'submit' | 'reset';
 };
 
-class Button extends Component<PropsWithChildren<ButtonProps>> {
+export class Button extends Component<PropsWithChildren<ButtonProps>> {
   constructor(props: PropsWithChildren<ButtonProps>) {
     super(props);
   }
@@ -29,5 +29,3 @@ class Button extends Component<PropsWithChildren<ButtonProps>> {
     );
   }
 }
-
-export default Button;

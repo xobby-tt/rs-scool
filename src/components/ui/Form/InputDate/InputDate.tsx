@@ -1,7 +1,7 @@
 import { Component } from 'react';
-import classes from './Input.module.css';
+import classes from './InputDate.module.css';
 
-type InputProps = {
+type InputDateProps = {
   placeholder?: string;
   icon?: string;
   name?: string;
@@ -9,8 +9,8 @@ type InputProps = {
   inputRef?: (ref: HTMLInputElement | null) => void;
 };
 
-class Input extends Component<InputProps> {
-  constructor(props: InputProps) {
+export class InputDate extends Component<InputDateProps> {
+  constructor(props: InputDateProps) {
     super(props);
   }
 
@@ -19,7 +19,8 @@ class Input extends Component<InputProps> {
       <>
         <div className={classes.inputWithIcon}>
           <input
-            className={classes.input}
+            type="date"
+            className={classes.date}
             name={this.props.name}
             ref={this.props.inputRef}
             placeholder={this.props.placeholder}
@@ -34,5 +35,3 @@ class Input extends Component<InputProps> {
     );
   }
 }
-
-export default Input;

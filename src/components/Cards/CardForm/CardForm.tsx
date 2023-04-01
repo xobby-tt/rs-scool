@@ -1,5 +1,4 @@
 import { Component, FormEvent } from 'react';
-import { AlertContext } from '../../../App';
 import { AlertStatus, IAlert, ICard } from '../../../types';
 import {
   IndexOptional,
@@ -7,7 +6,7 @@ import {
   ValidatorCompose,
   validators,
 } from '../../../utils/form.util';
-import { Button, Size } from '../../UI';
+import { AlertContext, Button, Size } from '../../UI';
 import { Input, InputCheckbox, InputDate, InputFile, Label, Radio, Select } from '../../UI/Form';
 import classes from './CardForm.module.css';
 

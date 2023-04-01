@@ -1,7 +1,5 @@
 import { Component } from 'react';
-import { CardsContext } from '../../App';
-import { CardForm } from '../../components/Cards';
-import CardList from '../../components/Cards/CardList/CardList';
+import { CardForm, CardList, CardsContext } from '../../components/Cards';
 import { ICard } from '../../types';
 import classes from './Creation.module.css';
 

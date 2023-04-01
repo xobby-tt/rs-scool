@@ -1,5 +1,4 @@
-import { CardsContext } from '../../App';
-import CardList from '../../components/Cards/CardList/CardList';
+import { CardList, CardsContext } from '../../components/Cards';
 import { Search } from '../../components/UI/Form';
 import classes from './Home.module.css';
 

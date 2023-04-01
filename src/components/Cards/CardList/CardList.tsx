@@ -15,5 +15,3 @@ export const CardList = (props: CardListProps) => {
     </div>
   );
 };
-
-export default CardList;

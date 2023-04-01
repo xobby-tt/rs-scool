@@ -1,4 +1,4 @@
-import { Component, PropsWithChildren } from 'react';
+import { PropsWithChildren } from 'react';
 import classes from './Button.module.css';
 
 export enum Size {
@@ -13,19 +13,10 @@ type ButtonProps = {
   type?: 'button' | 'submit' | 'reset';
 };
 
-export class Button extends Component<PropsWithChildren<ButtonProps>> {
-  constructor(props: PropsWithChildren<ButtonProps>) {
-    super(props);
-  }
-  render() {
-    return (
-      <button
-        className={classes.button}
-        type={this.props.type}
-        data-size={this.props.size || Size.S}
-      >
-        {this.props.children}
-      </button>
-    );
-  }
-}
+export const Button = (props: PropsWithChildren<ButtonProps>) => {
+  return (
+    <button className={classes.button} type={props.type} data-size={props.size || Size.S}>
+      {props.children}
+    </button>
+  );
+};

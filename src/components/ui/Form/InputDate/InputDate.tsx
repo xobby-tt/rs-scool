@@ -1,4 +1,3 @@
-import { Component } from 'react';
 import classes from './InputDate.module.css';
 
 type InputDateProps = {
@@ -9,29 +8,21 @@ type InputDateProps = {
   inputRef?: (ref: HTMLInputElement | null) => void;
 };
 
-export class InputDate extends Component<InputDateProps> {
-  constructor(props: InputDateProps) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <>
-        <div className={classes.inputWithIcon}>
-          <input
-            type="date"
-            className={classes.date}
-            name={this.props.name}
-            ref={this.props.inputRef}
-            placeholder={this.props.placeholder}
-            data-error={this.props.errorText || null}
-          />
-          {this.props.icon && (
-            <i className={`${classes.icon} material-symbols-outlined`}>{this.props.icon}</i>
-          )}
-        </div>
-        {this.props.errorText ? <div className={classes.error}>{this.props.errorText}</div> : null}
-      </>
-    );
-  }
-}
+export const InputDate = (props: InputDateProps) => {
+  return (
+    <>
+      <div className={classes.inputWithIcon}>
+        <input
+          type="date"
+          className={classes.date}
+          name={props.name}
+          ref={props.inputRef}
+          placeholder={props.placeholder}
+          data-error={props.errorText || null}
+        />
+        {props.icon && <i className={`${classes.icon} material-symbols-outlined`}>{props.icon}</i>}
+      </div>
+      {props.errorText ? <div className={classes.error}>{props.errorText}</div> : null}
+    </>
+  );
+};

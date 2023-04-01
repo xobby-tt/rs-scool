@@ -3,8 +3,8 @@ import { Outlet } from 'react-router-dom';
 import { CARDS } from './mocks/cards.mock';
 import { AlertStatus, IAlert, ICard } from './types';
 import classes from './App.module.css';
-import Header from './components/Header/Header';
 import { Alert } from './components/UI';
+import { Header } from './components/Header/Header';
 
 export const CardsContext = React.createContext({
   cards: CARDS,

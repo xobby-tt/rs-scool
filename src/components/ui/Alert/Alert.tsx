@@ -1,4 +1,3 @@
-import { Component } from 'react';
 import { IAlert } from '../../../types';
 import classes from './Alert.module.css';
 
@@ -7,25 +6,17 @@ type AlertProps = {
   close: (alert: IAlert) => void;
 };
 
-export class Alert extends Component<AlertProps> {
-  constructor(props: AlertProps) {
-    super(props);
-  }
-
-  handleClose = () => {
-    this.props.close(this.props.alert);
+export const Alert = (props: AlertProps) => {
+  const handleClose = () => {
+    props.close(props.alert);
   };
 
-  render() {
-    const alert = this.props.alert;
-
-    return (
-      <div className={classes.alert} data-status={alert.status}>
-        {alert.message}
-        <button className={`${classes.close} material-symbols-outlined`} onClick={this.handleClose}>
-          close
-        </button>
-      </div>
-    );
-  }
-}
+  return (
+    <div className={classes.alert} data-status={props.alert.status}>
+      {props.alert.message}
+      <button className={`${classes.close} material-symbols-outlined`} onClick={handleClose}>
+        close
+      </button>
+    </div>
+  );
+};

@@ -1,33 +1,30 @@
-import { Component } from 'react';
+import { ForwardedRef, forwardRef } from 'react';
+import { UseFormRegisterReturn } from 'react-hook-form';
 import classes from './Select.module.css';
 
 type SelectProps = {
   placeholder?: string;
   icon?: string;
-  name?: string;
   errorText?: string;
   options: string[];
-  selectRef?: (ref: HTMLSelectElement | null) => void;
 };
 
-export class Select extends Component<SelectProps> {
-  constructor(props: SelectProps) {
-    super(props);
-  }
-
-  render() {
+export const Select = forwardRef(
+  (props: SelectProps & UseFormRegisterReturn, ref: ForwardedRef<HTMLSelectElement>) => {
     return (
       <>
-        <div className={classes.container} data-error={this.props.errorText || null}>
+        <div className={classes.container} data-error={props.errorText || null}>
           <select
             className={classes.select}
-            name={this.props.name}
-            ref={this.props.selectRef}
-            placeholder={this.props.placeholder}
+            name={props.name}
+            ref={ref}
+            onChange={props.onChange}
+            onBlur={props.onBlur}
+            placeholder={props.placeholder}
           >
             <option value="">None</option>
 
-            {this.props.options.map((option) => (
+            {props.options.map((option) => (
               <option key={option} value={option}>
                 {option}
               </option>
@@ -35,8 +32,8 @@ export class Select extends Component<SelectProps> {
           </select>
           <i className={`${classes.icon} material-symbols-outlined`}>expand_more</i>
         </div>
-        {this.props.errorText ? <div className={classes.error}>{this.props.errorText}</div> : null}
+        {props.errorText ? <div className={classes.error}>{props.errorText}</div> : null}
       </>
     );
   }
-}
+);

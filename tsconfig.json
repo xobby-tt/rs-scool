@@ -15,7 +15,7 @@
     "isolatedModules": true,
     "strictNullChecks": false,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
   },
   "include": ["./src/**/*", "vite.config.ts", "setup-tests.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]

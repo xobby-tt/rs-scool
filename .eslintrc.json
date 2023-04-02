@@ -38,6 +38,14 @@
     "@typescript-eslint/no-empty-function": "off",
     "@typescript-eslint/no-explicit-any": "error",
     "@typescript-eslint/no-var-reqiures": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      { 
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_",
+        "caughtErrorsIgnorePattern": "^_"
+      }
+    ],
     "react/jsx-uses-react": "off",
     "react/react-in-jsx-scope": "off"
   },

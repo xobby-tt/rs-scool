@@ -1,44 +1,39 @@
-import { Component } from 'react';
+import { ForwardedRef, forwardRef } from 'react';
+import { UseFormRegisterReturn } from 'react-hook-form';
 import { Checkbox } from '../Checkbox/Checkbox';
 import classes from './Radio.module.css';
 
 type RadioProps = {
   placeholder?: string;
   icon?: string;
-  name?: string;
   errorText?: string;
   options: string[];
-  inputRef?: (ref: HTMLInputElement | null) => void;
 };
 
-export class Radio extends Component<RadioProps> {
-  constructor(props: RadioProps) {
-    super(props);
-  }
-
-  render() {
-    const hasError = !!this.props.errorText || null;
+export const Radio = forwardRef(
+  (props: RadioProps & UseFormRegisterReturn, ref: ForwardedRef<HTMLInputElement>) => {
+    const hasError = !!props.errorText || null;
 
     return (
       <>
-        {this.props.options.map((option) => {
+        {props.options.map((option) => {
           return (
             <label key={option} className={classes.radio}>
               <Checkbox
                 type="radio"
-                inputRef={this.props.inputRef}
-                name={this.props.name}
+                inputRef={ref}
                 value={option}
                 rounded={true}
                 error={hasError}
+                {...props}
               ></Checkbox>
               <span className={classes.radio__value}>{option}</span>
             </label>
           );
         })}
 
-        {this.props.errorText ? <div className={classes.error}>{this.props.errorText}</div> : null}
+        {props.errorText ? <div className={classes.error}>{props.errorText}</div> : null}
       </>
     );
   }
-}
+);

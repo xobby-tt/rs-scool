@@ -1,33 +1,29 @@
-import { Component } from 'react';
+import { ForwardedRef } from 'react';
+import { UseFormRegisterReturn } from 'react-hook-form';
 import classes from './Checkbox.module.css';
 
 type CheckboxProps = {
   placeholder?: string;
   icon?: string;
-  name?: string;
   value?: string;
   type?: string;
   rounded?: boolean;
+  inputRef: ForwardedRef<HTMLInputElement>;
   error?: boolean;
-  inputRef?: (ref: HTMLInputElement | null) => void;
 };
 
-export class Checkbox extends Component<CheckboxProps> {
-  constructor(props: CheckboxProps) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <input
-        className={classes.checkbox}
-        name={this.props.name}
-        type={this.props.type || 'checkbox'}
-        data-rounded={this.props.rounded || null}
-        data-error={this.props.error || null}
-        ref={this.props.inputRef}
-        value={this.props.value}
-      ></input>
-    );
-  }
-}
+export const Checkbox = (props: CheckboxProps & Partial<UseFormRegisterReturn>) => {
+  return (
+    <input
+      className={classes.checkbox}
+      name={props.name}
+      type={props.type || 'checkbox'}
+      data-rounded={props.rounded || null}
+      data-error={props.error || null}
+      onChange={props.onChange}
+      onBlur={props.onBlur}
+      ref={props.inputRef}
+      value={props.value}
+    ></input>
+  );
+};

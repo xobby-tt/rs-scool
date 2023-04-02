@@ -7,7 +7,7 @@ import {
   validators,
 } from '../../../utils/form.util';
 import { AlertContext, Button, Size } from '../../UI';
-import { Input, InputCheckbox, InputDate, InputFile, Label, Radio, Select } from '../../UI/Form';
+import { InputCheckbox, InputDate, InputFile, Label, Radio, Select } from '../../UI/Form';
 import classes from './CardForm.module.css';
 
 type CardFormProps = {
@@ -80,14 +80,14 @@ export class CardForm extends Component<CardFormProps, CardFormState> {
               onSubmit={(e) => this.handleSubmit(e, sendAlert)}
             >
               <Label label="What is your name?" className={classes.field}>
-                <Input name={'cardName'} errorText={this.state.errors['name']?.[0]}></Input>
+                {/* <Input name={'cardName'} errorText={this.state.errors['name']?.[0]}></Input> */}
               </Label>
 
               <Label label="Describe yourself please" className={classes.field}>
-                <Input
+                {/* <Input
                   name={'description'}
                   errorText={this.state.errors['description']?.[0]}
-                ></Input>
+                ></Input> */}
               </Label>
 
               <Label label="Who you are?" className={classes.field}>

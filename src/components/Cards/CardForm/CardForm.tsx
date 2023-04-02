@@ -1,4 +1,4 @@
-import { FormEvent, useContext, useState } from 'react';
+import { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { AlertStatus, ICard } from '../../../types';
 import {
@@ -15,7 +15,7 @@ type CardFormProps = {
   createCard: (card: ICard) => void;
 };
 
-type CardForm = {
+type TCardForm = {
   cardName: string;
   description: string;
   image: FileList;
@@ -26,7 +26,7 @@ type CardForm = {
 };
 
 export const CardForm = (props: CardFormProps) => {
-  const { register, handleSubmit, reset } = useForm<CardForm>();
+  const { register, handleSubmit, reset } = useForm<TCardForm>();
   const [errors, setErrors] = useState<{ [key in keyof ICard]?: string[] }>({});
   const { sendAlert } = useContext(AlertContext);
   const formValidator: ValidatorCompose<ICard> = validatorCompose<IndexOptional<ICard>>({
@@ -38,7 +38,7 @@ export const CardForm = (props: CardFormProps) => {
     imageUrl: [validators.required()],
   });
 
-  const getFormFields = (formValues: CardForm): ICard => {
+  const getFormFields = (formValues: TCardForm): ICard => {
     const { cardName, description, image, sex, isBirthDateVisible, profession, birthdate } =
       formValues;
     const imageFile = image?.item(0);
@@ -55,7 +55,7 @@ export const CardForm = (props: CardFormProps) => {
     };
   };
 
-  const onSubmit = (formValues: CardForm, event: React.BaseSyntheticEvent) => {
+  const onSubmit = (formValues: TCardForm) => {
     const cardItem = getFormFields(formValues);
     const validator = formValidator(cardItem);
 

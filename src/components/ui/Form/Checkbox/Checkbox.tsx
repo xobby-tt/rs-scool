@@ -1,4 +1,4 @@
-import { ForwardedRef, forwardRef } from 'react';
+import { ForwardedRef } from 'react';
 import { UseFormRegisterReturn } from 'react-hook-form';
 import classes from './Checkbox.module.css';
 

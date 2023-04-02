@@ -16,9 +16,7 @@ export const AlertHost = (props: PropsWithChildren<object>) => {
   };
 
   const closeAlert = (alert: IAlert) => {
-    setAlerts({
-      ...alerts.filter((alertItems) => alertItems !== alert),
-    });
+    setAlerts([...alerts.filter((alertItems) => alertItems !== alert)]);
   };
 
   return (

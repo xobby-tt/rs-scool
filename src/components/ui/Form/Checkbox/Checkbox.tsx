@@ -1,17 +1,18 @@
+import { ForwardedRef, forwardRef } from 'react';
+import { UseFormRegisterReturn } from 'react-hook-form';
 import classes from './Checkbox.module.css';
 
 type CheckboxProps = {
   placeholder?: string;
   icon?: string;
-  name?: string;
   value?: string;
   type?: string;
   rounded?: boolean;
+  inputRef: ForwardedRef<HTMLInputElement>;
   error?: boolean;
-  inputRef?: (ref: HTMLInputElement | null) => void;
 };
 
-export const Checkbox = (props: CheckboxProps) => {
+export const Checkbox = (props: CheckboxProps & Partial<UseFormRegisterReturn>) => {
   return (
     <input
       className={classes.checkbox}
@@ -19,6 +20,8 @@ export const Checkbox = (props: CheckboxProps) => {
       type={props.type || 'checkbox'}
       data-rounded={props.rounded || null}
       data-error={props.error || null}
+      onChange={props.onChange}
+      onBlur={props.onBlur}
       ref={props.inputRef}
       value={props.value}
     ></input>

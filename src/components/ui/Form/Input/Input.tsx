@@ -1,4 +1,4 @@
-import React, { LegacyRef } from 'react';
+import { ForwardedRef, forwardRef } from 'react';
 import { UseFormRegisterReturn } from 'react-hook-form';
 import classes from './Input.module.css';
 
@@ -9,8 +9,8 @@ type InputProps = {
   errorText?: string;
 };
 
-export const Input = React.forwardRef(
-  (props: InputProps & UseFormRegisterReturn, ref: LegacyRef<HTMLInputElement>) => {
+export const Input = forwardRef(
+  (props: InputProps & UseFormRegisterReturn, ref: ForwardedRef<HTMLInputElement>) => {
     return (
       <>
         <div className={classes.inputWithIcon}>

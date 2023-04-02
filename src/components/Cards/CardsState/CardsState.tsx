@@ -9,7 +9,7 @@ export const CardsContext = createContext({
 });
 
 export const CardsState = (props: PropsWithChildren<object>) => {
-  const [cards, setCards] = useState<ICard[]>([]);
+  const [cards, setCards] = useState<ICard[]>(CARDS);
   const { sendAlert } = useContext(AlertContext);
 
   const addCard = (card: ICard) => {

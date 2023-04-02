@@ -1,0 +1,25 @@
+.inputWithIcon {
+    width: 100%;
+    position: relative;
+}
+
+.date {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    color: var(--light-grayish-blue);
+    background: var(--very-dark-blue);
+    border: none;
+    border-radius: 20px;
+}
+
+.date[data-error] {
+    background-color: rgba(203,132,118,0.62);
+    border: 1px solid red;
+    color: black;
+}
+
+.error {
+    margin-top: 10px;
+    color: red;
+}

@@ -6,7 +6,7 @@ type TabLinkProps = {
   route: string;
 };
 
-class TabLink extends Component<PropsWithChildren<TabLinkProps>> {
+export class TabLink extends Component<PropsWithChildren<TabLinkProps>> {
   render() {
     return (
       <NavLink
@@ -20,5 +20,3 @@ class TabLink extends Component<PropsWithChildren<TabLinkProps>> {
     );
   }
 }
-
-export default TabLink;

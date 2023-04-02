@@ -1,7 +1,7 @@
 import { screen } from '@testing-library/dom';
 import { render } from '@testing-library/react';
 import { describe, test } from 'vitest';
-import CardItem from './CardItem';
+import { CardItem } from './CardItem';
 
 const mockCardItem = {
   id: '1',

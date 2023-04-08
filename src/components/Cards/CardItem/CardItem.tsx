@@ -1,22 +1,21 @@
-import { ICard } from '../../../types';
+import { Pokemon } from '@favware/graphql-pokemon';
 import classes from './CardItem.module.css';
 
 type CardProps = {
-  card: ICard;
+  card: Pokemon;
 };
 
 export const CardItem = (props: CardProps) => {
   const card = props.card;
-  const hasBirthdate = card.isBirthDateVisible && card.birthdate;
 
   return (
     <div className={classes.card}>
-      <img className={classes.cardImage} src={card.imageUrl}></img>
-      <h3 className={classes.title}>{card.name}</h3>
-      <p className={classes.content}>{card.description}</p>
+      <img className={classes.cardImage} src={card.sprite}></img>
+      <h3 className={classes.title}>{card.key}</h3>
+      <p className={classes.content}>{card.color}</p>
       <div className={classes.info}>
-        {hasBirthdate ? <div>Birthdate: {card.birthdate}</div> : null}
-        {card.profession ? <div>Profession: {card.profession}</div> : null}
+        {card.height ? <div>Birthdate: {card.height}</div> : null}
+        {card.weight ? <div>Profession: {card.weight}</div> : null}
       </div>
     </div>
   );

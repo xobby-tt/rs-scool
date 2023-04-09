@@ -8,7 +8,7 @@ export const Home = () => {
   const form = useForm({ defaultValues: { searchText: localStorage.getItem('search') || '' } });
   const getValues = form.getValues;
   const watchSearchText = form.watch('searchText');
-  const { cards, search } = useContext(CardsContext);
+  const { cards, loading, search } = useContext(CardsContext);
   useEffect(() => {
     return () => {
       localStorage.setItem('search', getValues().searchText || '');
@@ -29,7 +29,7 @@ export const Home = () => {
           </FormProvider>
         </div>
       </div>
-      <CardList cards={cards}></CardList>
+      {loading ? <div>LOader</div> : <CardList cards={cards}></CardList>}
     </>
   );
 };

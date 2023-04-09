@@ -7,10 +7,12 @@ import { AlertContext } from '../../UI';
 
 export const CardsContext = createContext<{
   cards: Pokemon[];
+  loading: boolean;
   addCard: (_card: ICard) => void;
   search: (_query: string) => void;
 }>({
   cards: [],
+  loading: true,
   addCard: (_card: ICard) => {},
   search: (_query: string) => {},
 });
@@ -18,13 +20,13 @@ export const CardsContext = createContext<{
 export const CardsState = (props: PropsWithChildren<object>) => {
   const [cards, setCards] = useState<Pokemon[]>([]);
   const { sendAlert } = useContext(AlertContext);
-  const defaultCards = useQuery<{ getAllPokemon: Pokemon[] }>(GET_ALL_POKEMONS, {
+  const defaultResult = useQuery<{ getAllPokemon: Pokemon[] }>(GET_ALL_POKEMONS, {
     variables: { take: 20, offset: 100 },
     onCompleted({ getAllPokemon }) {
       setCards(getAllPokemon);
     },
   });
-  const [lazySearch] = useLazyQuery<{ getFuzzyPokemon: Pokemon[] }>(SEARCH, {
+  const [lazySearch, searchResult] = useLazyQuery<{ getFuzzyPokemon: Pokemon[] }>(SEARCH, {
     variables: { pokemon: '' },
     onCompleted({ getFuzzyPokemon }) {
       setCards(getFuzzyPokemon);
@@ -40,16 +42,23 @@ export const CardsState = (props: PropsWithChildren<object>) => {
   const search = useCallback(
     (query: string) => {
       if (!query) {
-        setCards(defaultCards.data?.getAllPokemon);
+        setCards(defaultResult.data?.getAllPokemon);
       }
       lazySearch({ variables: { pokemon: query } });
     },
-    [setCards, lazySearch, defaultCards.data?.getAllPokemon]
+    [setCards, lazySearch, defaultResult.data?.getAllPokemon]
   );
 
   return (
     <>
-      <CardsContext.Provider value={{ cards: cards || [], addCard, search }}>
+      <CardsContext.Provider
+        value={{
+          cards: cards || [],
+          addCard,
+          search,
+          loading: searchResult.loading || defaultResult.loading,
+        }}
+      >
         {props.children}
       </CardsContext.Provider>
     </>

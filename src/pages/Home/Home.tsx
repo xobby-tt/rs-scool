@@ -1,6 +1,7 @@
 import { useContext, useEffect } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { CardList, CardsContext } from '../../components/Cards';
+import { Loader } from '../../components/UI';
 import { Search } from '../../components/UI/Form';
 import classes from './Home.module.css';
 
@@ -29,7 +30,14 @@ export const Home = () => {
           </FormProvider>
         </div>
       </div>
-      {loading ? <div>LOader</div> : <CardList cards={cards}></CardList>}
+
+      {loading ? (
+        <div className={classes.loader}>
+          <Loader></Loader>
+        </div>
+      ) : (
+        <CardList cards={cards}></CardList>
+      )}
     </>
   );
 };

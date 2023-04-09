@@ -21,3 +21,8 @@
     color: var(--very-dark-desaturated-blue);
     text-shadow: var(--light-grayish-blue) 1px 0 10px;
 }
+
+.loader {
+    position: relative;
+    margin-top: 200px;
+}

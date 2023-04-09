@@ -20,6 +20,7 @@ export const CardsContext = createContext<{
 export const CardsState = (props: PropsWithChildren<object>) => {
   const [cards, setCards] = useState<Pokemon[]>([]);
   const { sendAlert } = useContext(AlertContext);
+
   const defaultResult = useQuery<{ getAllPokemon: Pokemon[] }>(GET_ALL_POKEMONS, {
     variables: { take: 20, offset: 100 },
     onCompleted({ getAllPokemon }) {
@@ -39,6 +40,7 @@ export const CardsState = (props: PropsWithChildren<object>) => {
       message: 'New sock-card created!',
     });
   };
+
   const search = useCallback(
     (query: string) => {
       if (!query) {

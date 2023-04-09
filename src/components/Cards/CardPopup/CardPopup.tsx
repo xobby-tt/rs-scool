@@ -3,8 +3,8 @@ import { useCallback } from 'react';
 import classes from './CardPopup.module.css';
 
 type AlertProps = {
-  pokemon: Pokemon;
-  close: (pokemon: Pokemon) => void;
+  pokemon: Partial<Pokemon>;
+  close: (pokemon: Partial<Pokemon>) => void;
 };
 
 export const CardPopup = ({ pokemon, close }: AlertProps) => {

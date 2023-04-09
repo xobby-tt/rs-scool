@@ -5,14 +5,14 @@ import classes from './CardPopupHost.module.css';
 
 export const PopupContext = createContext({
   popups: [],
-  openPopup: (_pokemon: Pokemon) => {},
+  openPopup: (_pokemon: Partial<Pokemon>) => {},
 });
 
 export const CardPopupHost = (props: PropsWithChildren<object>) => {
-  const [popups, setPopups] = useState<Pokemon[]>([]);
+  const [popups, setPopups] = useState<Partial<Pokemon>[]>([]);
 
   const openPopup = useCallback(
-    (popup: Pokemon) => {
+    (popup: Partial<Pokemon>) => {
       console.log(popup);
       setPopups([...popups, popup]);
     },
@@ -20,7 +20,7 @@ export const CardPopupHost = (props: PropsWithChildren<object>) => {
   );
 
   const closePopup = useCallback(
-    (popup: Pokemon) => {
+    (popup: Partial<Pokemon>) => {
       setPopups([...popups.filter((popupItem) => popupItem !== popup)]);
     },
     [setPopups, popups]

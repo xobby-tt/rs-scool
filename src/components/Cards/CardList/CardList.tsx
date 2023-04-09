@@ -5,7 +5,7 @@ import { PopupContext } from '../CardPopup';
 import classes from './CardList.module.css';
 
 type CardListProps = {
-  cards: Pokemon[];
+  cards: Partial<Pokemon>[];
 };
 
 export const CardList = (props: CardListProps) => {

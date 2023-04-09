@@ -1,4 +1,4 @@
-import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client';
+import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { Query } from '@favware/graphql-pokemon';
 
 export type GraphQLPokemonResponse<K extends keyof Omit<Query, '__typename'>> = {
@@ -6,14 +6,10 @@ export type GraphQLPokemonResponse<K extends keyof Omit<Query, '__typename'>> = 
 };
 
 const cache = new InMemoryCache();
-const link = new HttpLink({
-  uri: 'https://graphqlpokemon.favware.tech/v7',
-});
 
 export const PokemonApiClient = new ApolloClient({
   cache: cache,
-  link: link,
-
+  uri: 'https://graphqlpokemon.favware.tech/v7',
   name: 'graphql-pokemon-client',
   version: '1.0',
   queryDeduplication: false,

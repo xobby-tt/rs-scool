@@ -1,5 +1,4 @@
 import { Pokemon } from '@favware/graphql-pokemon';
-import { ICard } from '../../../types';
 import { CardItem } from '../CardItem/CardItem';
 import classes from './CardList.module.css';
 

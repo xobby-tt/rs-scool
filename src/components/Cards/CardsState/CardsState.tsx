@@ -1,38 +1,55 @@
-import { useQuery } from '@apollo/client';
-import type { Pokemon, Query } from '@favware/graphql-pokemon';
-import { createContext, PropsWithChildren, useContext, useState } from 'react';
-import { CARDS } from '../../../mocks/cards.mock';
-import { GET_ALL_POKEMONS, PokemonApiClient, SEARCH } from '../../../api';
+import { useLazyQuery, useQuery } from '@apollo/client';
+import type { Pokemon } from '@favware/graphql-pokemon';
+import { createContext, PropsWithChildren, useCallback, useContext, useState } from 'react';
+import { GET_ALL_POKEMONS, SEARCH } from '../../../api';
 import { AlertStatus, ICard } from '../../../types';
 import { AlertContext } from '../../UI';
 
-export const CardsContext = createContext<{ cards: Pokemon[]; addCard: (_card: ICard) => void }>({
+export const CardsContext = createContext<{
+  cards: Pokemon[];
+  addCard: (_card: ICard) => void;
+  search: (_query: string) => void;
+}>({
   cards: [],
   addCard: (_card: ICard) => {},
+  search: (_query: string) => {},
 });
 
-type GraphQLPokemonResponse<K extends keyof Omit<Query, '__typename'>> = Record<
-  K,
-  Omit<Query[K], '__typename'>
->;
-
 export const CardsState = (props: PropsWithChildren<object>) => {
-  const [cards, setCards] = useState<ICard[]>(CARDS);
+  const [cards, setCards] = useState<Pokemon[]>([]);
   const { sendAlert } = useContext(AlertContext);
-  const { loading, error, data } = useQuery<{ getAllPokemon: Pokemon[] }>(GET_ALL_POKEMONS, {
-    client: PokemonApiClient,
-    variables: { item: 'hel' },
+  const defaultCards = useQuery<{ getAllPokemon: Pokemon[] }>(GET_ALL_POKEMONS, {
+    variables: { take: 20, offset: 100 },
+    onCompleted({ getAllPokemon }) {
+      setCards(getAllPokemon);
+    },
   });
-  const addCard = (card: ICard) => {
+  const [lazySearch] = useLazyQuery<{ getFuzzyPokemon: Pokemon[] }>(SEARCH, {
+    variables: { pokemon: '' },
+    onCompleted({ getFuzzyPokemon }) {
+      setCards(getFuzzyPokemon);
+    },
+  });
+
+  const addCard = (_card: ICard) => {
     sendAlert({
       status: AlertStatus.Success,
       message: 'New sock-card created!',
     });
   };
+  const search = useCallback(
+    (query: string) => {
+      if (!query) {
+        setCards(defaultCards.data?.getAllPokemon);
+      }
+      lazySearch({ variables: { pokemon: query } });
+    },
+    [setCards, lazySearch, defaultCards.data?.getAllPokemon]
+  );
 
   return (
     <>
-      <CardsContext.Provider value={{ cards: data?.getAllPokemon || [], addCard }}>
+      <CardsContext.Provider value={{ cards: cards || [], addCard, search }}>
         {props.children}
       </CardsContext.Provider>
     </>

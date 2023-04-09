@@ -1,4 +1,9 @@
 import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client';
+import { Query } from '@favware/graphql-pokemon';
+
+export type GraphQLPokemonResponse<K extends keyof Omit<Query, '__typename'>> = {
+  data: Record<K, Omit<Query[K], '__typename'>>;
+};
 
 const cache = new InMemoryCache();
 const link = new HttpLink({

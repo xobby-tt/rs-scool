@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useCallback, useContext, useEffect } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { CardList, CardsContext } from '../../components/Cards';
 import { Loader } from '../../components/UI';
@@ -8,7 +8,6 @@ import classes from './Home.module.css';
 export const Home = () => {
   const form = useForm({ defaultValues: { searchText: localStorage.getItem('search') || '' } });
   const getValues = form.getValues;
-  const watchSearchText = form.watch('searchText');
   const { cards, loading, search } = useContext(CardsContext);
   useEffect(() => {
     return () => {
@@ -16,9 +15,16 @@ export const Home = () => {
     };
   }, [getValues]);
 
-  useEffect(() => {
-    search(watchSearchText);
-  }, [search, watchSearchText]);
+  useEffect(() => {}, [search]);
+
+  const handleKeyDown = useCallback(
+    (event: React.KeyboardEvent<HTMLDivElement>) => {
+      if (event.key === 'Enter') {
+        search(getValues().searchText);
+      }
+    },
+    [search, getValues]
+  );
 
   return (
     <>
@@ -26,7 +32,9 @@ export const Home = () => {
         <div className={classes.input}>
           <h1 className={classes.searchHeader}>Don&apos;t be alone, find your pair</h1>
           <FormProvider {...form}>
-            <Search placeholder="Find you love..."></Search>
+            <div onKeyDown={handleKeyDown}>
+              <Search placeholder="Find you love..."></Search>
+            </div>
           </FormProvider>
         </div>
       </div>

@@ -3,7 +3,6 @@ import { screen } from '@testing-library/dom';
 import { render } from '@testing-library/react';
 import { describe, test } from 'vitest';
 import { POKEMONS_LIST_MOCK } from '../../../mocks';
-import { CARDS } from '../../../mocks/cards.mock';
 import { PopupContext } from '../CardPopup';
 import { CardList } from './CardList';
 

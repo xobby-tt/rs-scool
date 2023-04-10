@@ -1,12 +1,12 @@
-import { describe, test } from 'vitest';
+import { MockedProvider } from '@apollo/client/testing';
 import { screen } from '@testing-library/dom';
 import { render } from '@testing-library/react';
-import { BrowserRouter, Outlet, Router, RouterProvider } from 'react-router-dom';
-import { Header } from './components/Header/Header';
-import { CardPopupHost } from './components/Cards/CardPopup';
-import { AlertHost } from './components/UI';
-import { MockedProvider } from '@apollo/client/testing';
+import { BrowserRouter, Outlet } from 'react-router-dom';
+import { describe, test } from 'vitest';
 import { CardsState } from './components/Cards';
+import { CardPopupHost } from './components/Cards/CardPopup';
+import { Header } from './components/Header/Header';
+import { AlertHost } from './components/UI';
 import { POKEMON_RESPONCES_MOCK } from './mocks';
 
 describe('App', () => {

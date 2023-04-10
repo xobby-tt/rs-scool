@@ -9,13 +9,6 @@ export const Home = () => {
   const form = useForm({ defaultValues: { searchText: localStorage.getItem('search') || '' } });
   const getValues = form.getValues;
   const { cards, loading, search } = useContext(CardsContext);
-  useEffect(() => {
-    return () => {
-      localStorage.setItem('search', getValues().searchText || '');
-    };
-  }, [getValues]);
-
-  useEffect(() => {}, [search]);
 
   const handleKeyDown = useCallback(
     (event: React.KeyboardEvent<HTMLDivElement>) => {
@@ -25,6 +18,18 @@ export const Home = () => {
     },
     [search, getValues]
   );
+
+  useEffect(() => {
+    if (getValues().searchText) {
+      search(getValues().searchText);
+    }
+
+    return () => {
+      localStorage.setItem('search', getValues().searchText || '');
+    };
+  }, [search, getValues]);
+
+  useEffect(() => {}, [search]);
 
   return (
     <>

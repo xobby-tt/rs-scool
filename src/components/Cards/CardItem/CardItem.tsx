@@ -9,7 +9,7 @@ export const CardItem = (props: CardProps) => {
   const card = props.card;
 
   return (
-    <div className={classes.card}>
+    <div role="cardItem" className={classes.card}>
       <img className={classes.cardImage} src={card.sprite}></img>
       <h3 className={classes.title}>{card.key}</h3>
       <p className={classes.content}>{card.color}</p>

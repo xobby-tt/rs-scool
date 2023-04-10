@@ -13,7 +13,6 @@ export const CardPopupHost = (props: PropsWithChildren<object>) => {
 
   const openPopup = useCallback(
     (popup: Partial<Pokemon>) => {
-      console.log(popup);
       setPopups([...popups, popup]);
     },
     [setPopups, popups]

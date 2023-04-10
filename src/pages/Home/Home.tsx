@@ -5,8 +5,12 @@ import { Loader } from '../../components/UI';
 import { Search } from '../../components/UI/Form';
 import classes from './Home.module.css';
 
+export const SEARCH_LS_KEY = 'search';
+
 export const Home = () => {
-  const form = useForm({ defaultValues: { searchText: localStorage.getItem('search') || '' } });
+  const form = useForm({
+    defaultValues: { searchText: localStorage.getItem(SEARCH_LS_KEY) || '' },
+  });
   const getValues = form.getValues;
   const { cards, loading, search } = useContext(CardsContext);
 
@@ -25,7 +29,7 @@ export const Home = () => {
     }
 
     return () => {
-      localStorage.setItem('search', getValues().searchText || '');
+      localStorage.setItem(SEARCH_LS_KEY, getValues().searchText || '');
     };
   }, [search, getValues]);
 

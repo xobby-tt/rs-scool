@@ -14,6 +14,6 @@ describe('CardList', () => {
         <CardList cards={POKEMONS_LIST_MOCK}></CardList>
       </PopupContext.Provider>
     );
-    expect(screen.getAllByRole('heading')).toHaveLength(CARDS.length);
+    expect(screen.getAllByRole('heading')).toHaveLength(POKEMONS_LIST_MOCK.length);
   });
 });

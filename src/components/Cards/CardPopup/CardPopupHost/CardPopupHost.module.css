@@ -1,0 +1,16 @@
+.popupConainer {
+  position: fixed;
+  z-index: 1000;
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(118, 126, 123, 0.68);
+}
+
+.popup {
+  margin-top: 20px;
+}

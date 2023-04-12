@@ -5,7 +5,6 @@ export const CARDS: ICard[] = [
     id: 'eff5e10c-beca-4e1a-91ab-02e56daf7963e',
     name: 'Anatoly',
     description: `I'll keep you warm at any time of the year`,
-    work: 'journalist',
     address: 'Street',
     tags: ['Working out', 'Cycling', 'Photography', 'Writer', 'Instagram'],
     imageUrl: 'https://i.pinimg.com/564x/cc/ff/b5/ccffb57f20056c8769b2e53c6655d660.jpg',

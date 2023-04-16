@@ -8,7 +8,7 @@ export const Header = () => {
         <img src="src/assets/logo-sockinder.png" className={classes.logo}></img>
         <div className={classes.tabLinks}>
           <TabLink route={'/'}>Find your Love</TabLink>
-          <TabLink route={'/card-form'}>Create a sock-card</TabLink>
+          <TabLink route={'/card-form'}>Create pokemon</TabLink>
           <TabLink route={'/about'}>About us</TabLink>
         </div>
       </header>

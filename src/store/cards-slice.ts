@@ -28,8 +28,7 @@ export const seachCards = createAsyncThunk('cards/searchCards', async (query: st
   const response = await PokemonApiClient.query<{ getFuzzyPokemon: WritableDraft<Pokemon>[] }>({
     query: SEARCH,
     variables: { pokemon: query },
-  }).catch((error) => console.log(error));
-  console.log('searchResoponse', query, response);
+  });
   return response && response.data;
 });
 
@@ -37,8 +36,7 @@ export const fetchCards = createAsyncThunk('cards/items', async () => {
   const response = await PokemonApiClient.query<{ getAllPokemon: WritableDraft<Pokemon>[] }>({
     query: GET_ALL_POKEMONS,
     variables: { take: 20, offset: 100 },
-  }).catch((error) => console.log(error));
-  console.log('YHUNK', response);
+  });
   return response && response.data;
 });
 
@@ -80,7 +78,6 @@ export const cardsSlice = createSlice({
 export const { setSearchQuery } = cardsSlice.actions;
 
 export const selectCards = (state: AppState) => {
-  console.log(state.cards.searchCards || state.cards.items);
   return state.cards.searchCards || state.cards.items;
 };
 export const selectStatus = (state: AppState) => ({
@@ -88,5 +85,3 @@ export const selectStatus = (state: AppState) => ({
   error: state.cards.error,
 });
 export const selectSearchQuery = (state: AppState) => state.cards.searchQuery;
-
-export default cardsSlice.reducer;

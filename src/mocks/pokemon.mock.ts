@@ -1,4 +1,4 @@
-import { PokemonEnum } from '@favware/graphql-pokemon';
+import { Pokemon, PokemonEnum } from '@favware/graphql-pokemon';
 
 export const PIKACHU_MOCK = {
   key: PokemonEnum.Pikachu,
@@ -155,7 +155,7 @@ export const BULBASAUR_MOCK = {
   weight: 6.9,
 };
 
-export const POKEMONS_LIST_MOCK = [
+export const POKEMONS_LIST_MOCK: Partial<Pokemon>[] = [
   PIKACHU_MOCK,
   WARTORTLE_MOCK,
   SLOWPOKE_MOCK,

@@ -1,7 +1,8 @@
-import { useLazyQuery, useQuery } from '@apollo/client';
 import type { Pokemon } from '@favware/graphql-pokemon';
-import { createContext, PropsWithChildren, useCallback, useContext, useState } from 'react';
-import { GET_ALL_POKEMONS, SEARCH } from '../../../api';
+import { createContext, PropsWithChildren, useCallback, useContext, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { useAppDispatch } from '../../../store/app';
+import { fetchCards, seachCards, selectCards, selectStatus } from '../../../store/cards-slice';
 import { AlertStatus, ICard } from '../../../types';
 import { AlertContext } from '../../UI';
 
@@ -20,37 +21,11 @@ export const CardsContext = createContext<{
 });
 
 export const CardsState = (props: PropsWithChildren<object>) => {
-  const [cards, setCards] = useState<Pokemon[]>([]);
-  const { sendAlert } = useContext(AlertContext);
+  const cards = useSelector(selectCards);
+  const status = useSelector(selectStatus);
 
-  const defaultResult = useQuery<{ getAllPokemon: Pokemon[] }>(GET_ALL_POKEMONS, {
-    variables: { take: 20, offset: 100 },
-    onCompleted({ getAllPokemon }) {
-      setCards(getAllPokemon);
-    },
-    onError() {
-      if (searchResult.error?.message) {
-        sendAlert({
-          status: AlertStatus.Error,
-          message: searchResult.error?.message,
-        });
-      }
-    },
-  });
-  const [lazySearch, searchResult] = useLazyQuery<{ getFuzzyPokemon: Pokemon[] }>(SEARCH, {
-    variables: { pokemon: '' },
-    onCompleted({ getFuzzyPokemon }) {
-      setCards(getFuzzyPokemon);
-    },
-    onError() {
-      if (searchResult.error?.message) {
-        sendAlert({
-          status: AlertStatus.Error,
-          message: searchResult.error?.message,
-        });
-      }
-    },
-  });
+  const { sendAlert } = useContext(AlertContext);
+  const dispatch = useAppDispatch();
 
   const addCard = (_card: ICard) => {
     sendAlert({
@@ -61,14 +36,23 @@ export const CardsState = (props: PropsWithChildren<object>) => {
 
   const search = useCallback(
     (query: string) => {
-      if (!query) {
-        setCards(defaultResult.data?.getAllPokemon);
-      } else {
-        lazySearch({ variables: { pokemon: query } });
-      }
+      dispatch(seachCards(query));
     },
-    [setCards, lazySearch, defaultResult.data?.getAllPokemon]
+    [dispatch]
   );
+
+  useEffect(() => {
+    dispatch(fetchCards());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (status.error) {
+      sendAlert({
+        status: AlertStatus.Error,
+        message: status.error,
+      });
+    }
+  }, [sendAlert, status]);
 
   return (
     <>
@@ -77,8 +61,8 @@ export const CardsState = (props: PropsWithChildren<object>) => {
           cards: cards || [],
           addCard,
           search,
-          loading: searchResult.loading || defaultResult.loading,
-          error: !!searchResult.error || !!defaultResult.error,
+          loading: status.loading,
+          error: !!status.error,
         }}
       >
         {props.children}

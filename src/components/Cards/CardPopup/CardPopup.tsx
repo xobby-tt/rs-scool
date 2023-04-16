@@ -18,7 +18,7 @@ export const CardPopup = ({ pokemon, close }: AlertProps) => {
       <img className={classes.sprite} src={pokemon.sprite}></img>
       <div className={classes.description}>
         {pokemon.flavorTexts?.map((text) => (
-          <p key={text.game} className={classes.description__text}>
+          <p key={text.flavor} className={classes.description__text}>
             {text.flavor}
           </p>
         )) || ''}
@@ -41,17 +41,19 @@ export const CardPopup = ({ pokemon, close }: AlertProps) => {
           </ul>
 
           <ul className={classes.description__info_block}>
-            <li className={classes.description__item}>Attack: {pokemon.baseStats.attack || '-'}</li>
             <li className={classes.description__item}>
-              Defense: {pokemon.baseStats.defense || '-'}
-            </li>
-            <li className={classes.description__item}>HP: {pokemon.baseStats.hp || '-'}</li>
-            <li className={classes.description__item}>Speed: {pokemon.baseStats.speed || '-'}</li>
-            <li className={classes.description__item}>
-              Special attack: {pokemon.baseStats.specialattack || '-'}
+              Attack: {pokemon.baseStats?.attack || '-'}
             </li>
             <li className={classes.description__item}>
-              Special defense: {pokemon.baseStats.specialdefense || '-'}
+              Defense: {pokemon.baseStats?.defense || '-'}
+            </li>
+            <li className={classes.description__item}>HP: {pokemon.baseStats?.hp || '-'}</li>
+            <li className={classes.description__item}>Speed: {pokemon.baseStats?.speed || '-'}</li>
+            <li className={classes.description__item}>
+              Special attack: {pokemon.baseStats?.specialattack || '-'}
+            </li>
+            <li className={classes.description__item}>
+              Special defense: {pokemon.baseStats?.specialdefense || '-'}
             </li>
           </ul>
         </div>

@@ -1,15 +1,20 @@
 import { useCallback, useContext, useEffect } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
+import { useSelector } from 'react-redux';
 import { CardList, CardsContext } from '../../components/Cards';
 import { Loader } from '../../components/UI';
 import { Search } from '../../components/UI/Form';
+import { selectSearchQuery, setSearchQuery, useAppDispatch } from '../../store';
 import classes from './Home.module.css';
 
 export const SEARCH_LS_KEY = 'search';
 
 export const Home = () => {
+  const searchQuery = useSelector(selectSearchQuery);
+  const dispatch = useAppDispatch();
+
   const form = useForm({
-    defaultValues: { searchText: localStorage.getItem(SEARCH_LS_KEY) || '' },
+    defaultValues: { searchText: searchQuery || '' },
   });
   const getValues = form.getValues;
   const { cards, loading, search } = useContext(CardsContext);
@@ -29,9 +34,9 @@ export const Home = () => {
     }
 
     return () => {
-      localStorage.setItem(SEARCH_LS_KEY, getValues().searchText || '');
+      dispatch(setSearchQuery(getValues().searchText || ''));
     };
-  }, [search, getValues]);
+  }, [dispatch, search, getValues]);
 
   useEffect(() => {}, [search]);
 

@@ -1,6 +1,6 @@
 import { vi } from 'vitest';
 import { GET_ALL_POKEMONS, SEARCH } from '../api';
-import { PIKACHU_MOCK, POKEMONS_LIST_MOCK, SLOWPOKE_MOCK } from './pokemon.mock';
+import { PIKACHU_MOCK, POKEMONS_LIST_MOCK, SLOWPOKE_MOCK } from '../mocks';
 
 export const POKEMON_RESPONCES_MOCK = [
   {
